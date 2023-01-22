@@ -1,15 +1,17 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage("Hello Jenkins") {
-          steps {
-            sh 'echo hello World'
-          }
-       }
-    stage("Hello World") {
-          steps {
-            sh 'echo hello World2'
-          }
-       }   
-   }
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Die Anwendung wird gebaut'
+                sh '/opt/apache-maven-3.8.7/bin/mvn package'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Die Anwendung wird getestet'
+                sh '/opt/apache-maven-3.8.7/bin/mvn test'
+            }
+        }
+    }
 }
