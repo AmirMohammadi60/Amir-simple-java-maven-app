@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    enviroment {
+     VERSION = 1.0
+    }
     stages {
         stage('Build') {
             steps {
